@@ -4,6 +4,15 @@ blog entry about variable scope and hoisting in JS
 What is variable scope and hoisting in JavaScript?
 =========================
 
+Keyword | Meaning
+------------------------- | -------------
+Variable | A storage location
+Scope | Where a variable can be access
+Local | Accessible locally
+Global | Acessible globally
+Hoisted | Bringing a variable to the top
+Runtime | Virtual machine which interprets and executes code
+
 SCOPE
 ----
 
