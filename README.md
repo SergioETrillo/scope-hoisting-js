@@ -1,21 +1,19 @@
-# scope-hoisting-js
-blog entry about variable scope and hoisting in JS
-
 What is variable scope and hoisting in JavaScript?
 =========================
 
 Keyword | Meaning
 ------------------------- | -------------
 Variable | A storage location
-Scope | Where a variable can be access
-Local | Accessible locally
-Global | Acessible globally
+Function | Block of code designed to perform a particular task
+Scope | Where a variable can be accessed
+Local | Accessible locally (within a function)
+Global | Accessible globally (within the program)
 Hoisted | Bringing a variable to the top
 Runtime | Virtual machine which interprets and executes code
 
-SCOPE
-----
 
+Scope
+--
 Scope is the set of variables you have access to.
 
 Variable Scope (JavaScript) JavaScript has two scopes: global and local. A variable that is declared outside a function definition is a global variable, and its value is accessible and modifiable throughout your program.  Remember that global variables are evil, or so they say.
@@ -60,7 +58,7 @@ For example
         // code here can use dogName 
     
     }
-    
+
 
 Function arguments (parameters) work as local variables inside functions.
 
@@ -99,3 +97,46 @@ For example:
     function myFunction() {
         dogName = "Fluff";
     }
+
+Hoistering
+--
+*What is that?*
+
+Hoisting is JavaScript's default behaviour of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+*What does it mean?*
+
+Let's consider the following example:
+
+    var text= 'my text'; 
+      
+    (function() { 
+      alert(text); // undefined Whaaat??? JS is insane!!!!
+      var text = 'local text'; 
+    })();
+
+At first sight, you might expect that when running the function an alert of "local text" would pop up. 
+**Wrong.**
+
+*How does really work?*
+
+In JS, variables are "hoisted" within the current scope, to the top of the scope.  But, only the variable declaration is hoisted.  The initialisation is not!
+
+*Sorry, can you explain it like if I was 5?*
+
+Consider the example again:
+
+
+    (function() { 
+      alert(text); // undefined Whaaat??? JS is insane!!!!
+      var text = 'local text'; 
+    })();
+
+In the hoisting, JS does the following:
+
+    (function() { 
+	  var text;
+      alert(text); // undefined Whaaat??? JS is insane!!!!
+      text = 'local text'; 
+    })();
+
+Does it make more sense now?  the text variable has been hoisted to the top of the function scope, but only the declaration of the variable (i.e. `var text;` ). At this stage, text is undefined. Then we execute alert(text), but text is currently undefined! We only assign the value 'local text' to our variable after the alert is trigerred.  Too late!
