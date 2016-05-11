@@ -3,6 +3,10 @@ blog entry about variable scope and hoisting in JS
 
 What is variable scope and hoisting in JavaScript?
 =========================
+
+SCOPE
+----
+
 Scope is the set of variables you have access to.
 
 Variable Scope (JavaScript) JavaScript has two scopes: global and local. A variable that is declared outside a function definition is a global variable, and its value is accessible and modifiable throughout your program.  Remember that global variables are evil, or so they say.
@@ -47,4 +51,42 @@ For example
         // code here can use dogName 
     
     }
+    
 
+Function arguments (parameters) work as local variables inside functions.
+
+Automatically Global
+--
+Assigning a value to a variable that has not been declared before will create that variable as global.
+
+For example
+// code here can use dogName
+
+function myFunction() {
+    dogName = "Fluff";
+
+    // code here can use fullName
+
+}
+In order to make a variable local, you need to use the keyword `var`
+
+A day in the life of JS Variables
+--
+
+A JavaScript variable is born when it is declared.
+Local variables die when the function is completed.
+Global variables die when you close the page or the JS program ends.
+
+Global Variables in HTML
+--
+With JavaScript, the global scope is the complete JavaScript environment.
+
+In HTML, the global scope is the window object:  All global variables belong to the window object.
+
+For example:
+
+    // code here can use window.dogName
+    
+    function myFunction() {
+        dogName = "Fluff";
+    }
