@@ -28,3 +28,23 @@ For example
     
     }
 
+This gives us the ability to use variables with the same names in other functions, as they are not globally known. 
+
+Global JavaScript Variables
+--
+Any variable that is not declared within a function is global.
+
+A global variable has access to all scripts and functions.
+
+For example
+
+    var dogName = "Fluff";
+    
+    // code here can use dogName
+    
+    function myFunction() {
+    
+        // code here can use dogName 
+    
+    }
+
